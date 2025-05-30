@@ -1,18 +1,48 @@
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 const HeroSection = () => {
   const heroRef = useRef<HTMLDivElement>(null);
-  // const videoRef = useRef<HTMLVideoElement>(null); // No longer needed for GIF
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [imageError, setImageError] = useState(false); // For GIF loading error
+  const [videoError, setVideoError] = useState(false);
   
   useEffect(() => {
     // Mark as loaded after a short delay to trigger animations
     const timer = setTimeout(() => {
       setIsLoaded(true);
     }, 100);
+    
+    // Set up video properties and event handlers
+    const video = videoRef.current;
+    if (video) {
+      // Ensure video properties are set
+      video.loop = true;
+      video.muted = true;
+      video.autoplay = true;
+      video.playsInline = true;
+      
+      // Handle video end to ensure looping
+      const handleVideoEnd = () => {
+        video.currentTime = 0;
+        video.play().catch(console.error);
+      };
+      
+      // Handle video load to start playing
+      const handleVideoLoad = () => {
+        video.play().catch(console.error);
+      };
+      
+      video.addEventListener('ended', handleVideoEnd);
+      video.addEventListener('loadeddata', handleVideoLoad);
+      
+      return () => {
+        video.removeEventListener('ended', handleVideoEnd);
+        video.removeEventListener('loadeddata', handleVideoLoad);
+      };
+    }
     
     // Create particles effect
     if (heroRef.current) {
@@ -75,58 +105,140 @@ const HeroSection = () => {
   }, []);
   
   return (
-    <section ref={heroRef} className="hero-section pt-24">
+    <section ref={heroRef} className="hero-section min-h-screen flex items-center justify-center relative">
       {/* Background */}
       <div className="absolute inset-0 w-full h-full overflow-hidden z-0">
-        {!imageError ? (
-          <img 
-            src="/videos/ai_automation_v2.gif" 
-            alt="Background animation" 
+        {!videoError ? (
+          <video 
+            ref={videoRef}
+            autoPlay 
+            loop 
+            muted 
+            playsInline
             className="absolute w-full h-full object-cover object-center"
             style={{ 
-              filter: 'brightness(0.5)',
-              imageRendering: 'crisp-edges',
-              transform: 'scale(1.1)',
+              filter: 'brightness(0.4)',
+              transform: 'scale(1.02)',
               transformOrigin: 'center',
-              minHeight: '100vh',
-              width: '100vw'
+              height: '100%',
+              width: '100%',
+              objectFit: 'cover',
+              objectPosition: 'center center',
+              minWidth: '100%',
+              minHeight: '100%'
             }}
-            onError={() => setImageError(true)}
-          />
+            onError={() => setVideoError(true)}
+            onEnded={() => {
+              if (videoRef.current) {
+                videoRef.current.currentTime = 0;
+                videoRef.current.play().catch(console.error);
+              }
+            }}
+          >
+            <source src="/videos/AI_Automation_Video_Cropped_Frame.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
         ) : (
-          // Fallback gradient background if GIF fails to load
           <div 
             className="absolute inset-0 bg-gradient-to-br from-blue-900 via-blue-800 to-gray-900"
             style={{ opacity: 0.95, zIndex: -1 }}
           />
         )}
-        
-        {/* Dark overlay for text readability */}
-        <div className="absolute inset-0 bg-black/50 z-10"></div>
       </div>
       
       {/* Content */}
-      <div className="container mx-auto px-4 relative z-20 py-24 md:py-32">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className={`transition-all duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0 translate-y-8'}`}>
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 hero-text-shadow">
-              <span className="block mb-2 animate-slide-in" style={{ animationDelay: '0.2s' }}>
-                AI-Powered Automation Systems
-              </span>
-              <span className="block gradient-text animate-slide-in" style={{ animationDelay: '0.4s' }}>
-                for Businesses That Want to Grow
-              </span>
-            </h1>
-            <p className="text-lg md:text-xl text-gray-200 mb-8 animate-fade-in max-w-2xl mx-auto hero-text-shadow" style={{ animationDelay: '0.6s' }}>
-              Centralize your tools, automate your processes, and scale with clarity—powered by smart, done-for-you solutions.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in" style={{ animationDelay: '0.8s' }}>
-              <Button asChild className="hero-button-primary">
-                <Link to="/contact">Claim Free Custom Build</Link>
-              </Button>
-              <Button asChild className="hero-button-secondary">
-                <Link to="/services">Explore Services</Link>
-              </Button>
+      <div className="container mx-auto px-6 relative z-20 py-16 md:py-24">
+        <div className="max-w-7xl mx-auto">
+          <div className={`grid md:grid-cols-2 gap-12 items-center transition-all duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0 translate-y-8'}`}>
+            {/* Left Column - Main Content */}
+            <div className="text-left space-y-8">
+              <div className="inline-flex items-center px-4 py-2 rounded-full bg-brand-teal/10 border border-brand-teal/20 mb-4">
+                <span className="text-brand-teal text-sm font-medium">AI-Powered Business Solutions</span>
+              </div>
+              
+              <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight hero-text-shadow">
+                <span className="block mb-2 animate-slide-in" style={{ animationDelay: '0.2s' }}>
+                  Transform Your Business
+                </span>
+                <span className="block gradient-text animate-slide-in" style={{ animationDelay: '0.4s' }}>
+                  With Smart Automation
+                </span>
+              </h1>
+              
+              <p className="text-lg md:text-xl text-gray-200 animate-fade-in max-w-xl hero-text-shadow" style={{ animationDelay: '0.6s' }}>
+                Streamline operations, reduce costs, and scale your business with custom AI automation solutions designed specifically for your needs.
+              </p>
+
+              <div className="space-y-4 animate-fade-in" style={{ animationDelay: '0.7s' }}>
+                <div className="flex items-center gap-3">
+                  <CheckCircle2 className="text-brand-teal h-5 w-5" />
+                  <span className="text-gray-200">Cut operational costs by up to 40%</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <CheckCircle2 className="text-brand-teal h-5 w-5" />
+                  <span className="text-gray-200">Save 15+ hours per week on manual tasks</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <CheckCircle2 className="text-brand-teal h-5 w-5" />
+                  <span className="text-gray-200">24/7 automated business processes</span>
+                </div>
+              </div>
+              
+              <div className="flex flex-col sm:flex-row gap-4 pt-4 animate-fade-in" style={{ animationDelay: '0.8s' }}>
+                <Button asChild className="hero-button-primary group">
+                  <Link to="/contact" className="flex items-center gap-2">
+                    Get Your Custom Solution
+                    <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </Button>
+                <Button 
+                  asChild 
+                  className="bg-transparent hover:bg-white/10 text-white border-2 border-white/30 transition-all duration-300"
+                >
+                  <Link to="/services">View All Services</Link>
+                </Button>
+              </div>
+            </div>
+
+            {/* Right Column - Social Proof */}
+            <div className="hidden md:block bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 animate-fade-in" style={{ animationDelay: '1s' }}>
+              <div className="space-y-6">
+                <div className="flex items-start gap-4 p-4 bg-white/5 rounded-lg">
+                  <div className="flex-shrink-0">
+                    <div className="w-12 h-12 rounded-full bg-brand-teal/20 flex items-center justify-center">
+                      <span className="text-2xl">⚡</span>
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="text-white font-semibold mb-1">Rapid Implementation</h3>
+                    <p className="text-gray-300 text-sm">Get your automation solution up and running in days, not months</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-4 p-4 bg-white/5 rounded-lg">
+                  <div className="flex-shrink-0">
+                    <div className="w-12 h-12 rounded-full bg-brand-teal/20 flex items-center justify-center">
+                      <span className="text-2xl">🎯</span>
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="text-white font-semibold mb-1">Custom-Built for You</h3>
+                    <p className="text-gray-300 text-sm">Solutions tailored to your specific business needs and goals</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-4 p-4 bg-white/5 rounded-lg">
+                  <div className="flex-shrink-0">
+                    <div className="w-12 h-12 rounded-full bg-brand-teal/20 flex items-center justify-center">
+                      <span className="text-2xl">📈</span>
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="text-white font-semibold mb-1">Proven Results</h3>
+                    <p className="text-gray-300 text-sm">Join businesses achieving 300% ROI with our automation</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
