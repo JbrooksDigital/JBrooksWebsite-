@@ -5,44 +5,13 @@ import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 const HeroSection = () => {
   const heroRef = useRef<HTMLDivElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [videoError, setVideoError] = useState(false);
   
   useEffect(() => {
     // Mark as loaded after a short delay to trigger animations
     const timer = setTimeout(() => {
       setIsLoaded(true);
     }, 100);
-    
-    // Set up video properties and event handlers
-    const video = videoRef.current;
-    if (video) {
-      // Ensure video properties are set
-      video.loop = true;
-      video.muted = true;
-      video.autoplay = true;
-      video.playsInline = true;
-      
-      // Handle video end to ensure looping
-      const handleVideoEnd = () => {
-        video.currentTime = 0;
-        video.play().catch(console.error);
-      };
-      
-      // Handle video load to start playing
-      const handleVideoLoad = () => {
-        video.play().catch(console.error);
-      };
-      
-      video.addEventListener('ended', handleVideoEnd);
-      video.addEventListener('loadeddata', handleVideoLoad);
-      
-      return () => {
-        video.removeEventListener('ended', handleVideoEnd);
-        video.removeEventListener('loadeddata', handleVideoLoad);
-      };
-    }
     
     // Create particles effect
     if (heroRef.current) {
@@ -105,45 +74,10 @@ const HeroSection = () => {
   }, []);
   
   return (
-    <section ref={heroRef} className="hero-section min-h-screen flex items-center justify-center relative">
+    <section ref={heroRef} className="hero-section min-h-screen flex items-center justify-center relative bg-gradient-to-br from-blue-900 via-blue-800 to-gray-900">
       {/* Background */}
       <div className="absolute inset-0 w-full h-full overflow-hidden z-0">
-        {!videoError ? (
-          <video 
-            ref={videoRef}
-            autoPlay 
-            loop 
-            muted 
-            playsInline
-            className="absolute w-full h-full object-cover object-center"
-            style={{ 
-              filter: 'brightness(0.4)',
-              transform: 'scale(1.02)',
-              transformOrigin: 'center',
-              height: '100%',
-              width: '100%',
-              objectFit: 'cover',
-              objectPosition: 'center center',
-              minWidth: '100%',
-              minHeight: '100%'
-            }}
-            onError={() => setVideoError(true)}
-            onEnded={() => {
-              if (videoRef.current) {
-                videoRef.current.currentTime = 0;
-                videoRef.current.play().catch(console.error);
-              }
-            }}
-          >
-            <source src="/videos/AI_Automation_Video_Cropped_Frame.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        ) : (
-          <div 
-            className="absolute inset-0 bg-gradient-to-br from-blue-900 via-blue-800 to-gray-900"
-            style={{ opacity: 0.95, zIndex: -1 }}
-          />
-        )}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-blue-800 to-gray-900"></div>
       </div>
       
       {/* Content */}

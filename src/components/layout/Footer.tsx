@@ -61,8 +61,10 @@ const Footer = () => {
             </ul>
           </div>
           
-          <div>
-            <h3 className="text-xl font-semibold mb-4">Contact</h3>
+          <div>ouljmn  
+
+            /.¬m,.m.mmmml;;;/
+            ',mm nm<h3 className="text-xl font-semibold mb-4">Contact</h3>
             <p className="text-gray-300">Get in touch to discuss your project</p>
             <Link 
               to="/contact" 

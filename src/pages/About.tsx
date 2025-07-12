@@ -101,13 +101,16 @@ const About = () => {
             <div className="reveal">
               <h2 className="text-3xl font-bold mb-6">Our Story</h2>
               <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
-                J. Brooks Digital was founded with a clear purpose: to make powerful AI and automation technology accessible to businesses of all sizes, not just large enterprises with massive budgets.
+                At J Brooks Digital, we're more than a tech company we're problem solvers who've walked in your shoes. Our journey from hospitality to digital solutions taught us that the best tools aren't just powerful; they're practical, accessible, and designed with real businesses in mind.
               </p>
               <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
-                Our founder, Jennifer Brooks, saw firsthand how smaller businesses were being left behind in the AI revolution despite having the most to gain from efficiency improvements. This realization sparked the creation of our company.
+                We understand the challenges of growing a business without deep pockets or endless resources. That's why our solutions are different: they're battle-tested in our own operations, refined through real-world use, and optimized for businesses that need to make every minute and dollar count.
+              </p>
+              <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
+                What sets us apart isn't just our technology, it's our perspective. We believe that sophisticated business tools shouldn't be reserved for big corporations with massive budgets. Innovation should be accessible to everyone, from the solo entrepreneur just starting out to the established family business looking to scale.
               </p>
               <p className="text-lg text-gray-600 dark:text-gray-300">
-                Today, we work with solopreneurs, startups, and nonprofit organizations to implement custom, white-labeled AI solutions that streamline operations, reduce costs, and create exceptional customer experiences.
+                Our commitment is simple: to provide you with tools that actually work, support that understands your challenges, and solutions that help you thrive in today's digital landscape. Because when you succeed, we succeed and that's what family businesses are all about.
               </p>
             </div>
             <div className="reveal">

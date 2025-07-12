@@ -59,7 +59,7 @@ const CtaSection = () => {
                 Get a free custom build proposal and see how AI automation can streamline your operations and drive growth.
               </p>
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                <Button asChild className="bg-brand-teal hover:bg-brand-teal/90 text-white font-bold text-lg py-7 px-10 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:scale-105">
+                <Button asChild className="bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg py-7 px-10 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:scale-105">
                   <Link to="/contact">Claim Free Consultation</Link>
                 </Button>
                 <Button asChild variant="outline" className="border-2 border-white text-white hover:bg-white/20 bg-white/10 font-bold text-lg py-7 px-10 rounded-full shadow-lg hover:shadow-xl transition-all">
