@@ -1,13 +1,14 @@
 
 import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-brand-blue text-white py-16">
-      <div className="container mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+    <footer className="bg-brand-blue text-white py-16 w-full">
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-7xl mx-auto">
           <div className="col-span-1 md:col-span-1">
             <Link to="/" className="inline-block mb-4">
               <span className="text-2xl font-bold">
@@ -39,7 +40,7 @@ const Footer = () => {
             </div>
           </div>
           
-          <div>
+          <div className="col-span-1">
             <h3 className="text-xl font-semibold mb-4">Services</h3>
             <ul className="space-y-2">
               <li><Link to="/services#workflow" className="text-gray-300 hover:text-brand-teal transition-colors">Workflow Automation</Link></li>
@@ -50,7 +51,7 @@ const Footer = () => {
             </ul>
           </div>
           
-          <div>
+          <div className="col-span-1">
             <h3 className="text-xl font-semibold mb-4">Company</h3>
             <ul className="space-y-2">
               <li><Link to="/about" className="text-gray-300 hover:text-brand-teal transition-colors">About Us</Link></li>
@@ -61,21 +62,19 @@ const Footer = () => {
             </ul>
           </div>
           
-          <div>ouljmn  
-
-            /.¬m,.m.mmmml;;;/
-            ',mm nm<h3 className="text-xl font-semibold mb-4">Contact</h3>
-            <p className="text-gray-300">Get in touch to discuss your project</p>
-            <Link 
-              to="/contact" 
-              className="inline-block mt-4 px-6 py-3 bg-brand-teal text-white font-semibold rounded-md hover:bg-opacity-90 transition-all"
+          <div className="col-span-1">
+            <h3 className="text-xl font-semibold mb-4">Contact</h3>
+            <p className="text-gray-300 mb-4">Get in touch to discuss your project</p>
+            <Button 
+              asChild 
+              className="w-full md:w-auto bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-2.5 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5"
             >
-              Contact Us
-            </Link>
+              <Link to="/contact">Claim Free Consultation</Link>
+            </Button>
           </div>
         </div>
         
-        <div className="mt-12 pt-8 border-t border-gray-700 text-center md:text-left text-gray-400">
+        <div className="mt-12 pt-8 border-t border-gray-700 text-center md:text-left text-gray-400 max-w-7xl mx-auto">
           <p>© {currentYear} J. Brooks Digital. All rights reserved.</p>
         </div>
       </div>

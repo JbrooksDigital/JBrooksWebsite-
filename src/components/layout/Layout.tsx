@@ -1,5 +1,6 @@
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 import Header from "./Header";
 import Footer from "./Footer";
 
@@ -44,12 +45,12 @@ const Layout = ({ children }: LayoutProps) => {
         {children}
       </main>
       <Footer />
-      <a 
-        href="/contact" 
-        className="cta-button animate-pulse-soft"
+      <Button 
+        asChild 
+        className="fixed bottom-8 right-8 bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-2.5 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 z-50"
       >
-        Claim Free Consultation
-      </a>
+        <Link to="/contact">Claim Free Consultation</Link>
+      </Button>
     </div>
   );
 };

@@ -235,7 +235,10 @@ const About = () => {
               <p className="text-lg mb-8">
                 Ready to streamline your operations with intelligent automation? Get started with a free custom build proposal.
               </p>
-              <Button asChild className="bg-brand-teal hover:bg-brand-teal/90 text-white font-medium text-lg py-6 px-8">
+              <Button 
+                asChild 
+                className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-2.5 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5"
+              >
                 <Link to="/contact">Claim Free Consultation</Link>
               </Button>
             </div>

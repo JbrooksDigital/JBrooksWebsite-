@@ -119,9 +119,12 @@ const HeroSection = () => {
               </div>
               
               <div className="flex flex-col sm:flex-row gap-4 pt-4 animate-fade-in" style={{ animationDelay: '0.8s' }}>
-                <Button asChild className="hero-button-primary group">
+                <Button 
+                  asChild 
+                  className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-2.5 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5"
+                >
                   <Link to="/contact" className="flex items-center gap-2">
-                    Get Your Custom Solution
+                    Claim Free Consultation
                     <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </Button>
