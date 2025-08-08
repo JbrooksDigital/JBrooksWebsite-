@@ -21,27 +21,6 @@ const About = () => {
     }
   ];
   
-  const teamMembers = [
-    {
-      name: "Jennifer Brooks",
-      position: "Founder & CEO",
-      bio: "With over 15 years of experience in technology and business optimization, Jennifer founded J. Brooks Digital to help small businesses harness the power of AI.",
-      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80"
-    },
-    {
-      name: "David Chen",
-      position: "Chief Technology Officer",
-      bio: "David brings expertise in AI development and system architecture, ensuring our solutions are both cutting-edge and reliable.",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80"
-    },
-    {
-      name: "Sophia Rodriguez",
-      position: "Client Success Manager",
-      bio: "Dedicated to ensuring client satisfaction, Sophia works closely with every client to understand their unique needs and ensure optimal results.",
-      image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80"
-    }
-  ];
-  
   const timeline = [
     {
       year: 2018,
@@ -193,38 +172,7 @@ const About = () => {
         </div>
       </section>
       
-      {/* Team Section */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-900">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16 reveal">
-            <h2 className="text-3xl font-bold mb-6">Meet Our Team</h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Passionate experts dedicated to helping your business succeed with AI-powered solutions.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {teamMembers.map((member, index) => (
-              <div 
-                key={index} 
-                className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all reveal"
-                style={{ animationDelay: `${index * 0.2}s` }}
-              >
-                <img 
-                  src={member.image} 
-                  alt={member.name} 
-                  className="w-full h-64 object-cover"
-                />
-                <div className="p-6">
-                  <h3 className="text-xl font-bold mb-1">{member.name}</h3>
-                  <p className="text-brand-teal font-medium mb-4">{member.position}</p>
-                  <p className="text-gray-600 dark:text-gray-300">{member.bio}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Team Section hidden for now */}
       
       {/* CTA Section */}
       <section className="py-20">

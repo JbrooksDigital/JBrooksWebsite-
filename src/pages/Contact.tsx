@@ -40,14 +40,39 @@ const Contact = () => {
     }));
   };
   
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
+
+    try {
+      // Send via FormSubmit AJAX endpoint
+      const response = await fetch("https://formsubmit.co/ajax/jbrooksdigital@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        },
+        body: JSON.stringify({
+          _subject: "New Website Consultation Request",
+          _template: "table",
+          // Optionally disable captcha
+          _captcha: "false",
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          phone: formData.phone,
+          company: formData.company,
+          businessType: formData.businessType,
+          serviceInterest: formData.serviceInterest,
+          message: formData.message,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send message");
+      }
+
       toast.success("Your message has been sent successfully! We'll be in touch soon.");
-      setIsSubmitting(false);
       setFormData({
         firstName: "",
         lastName: "",
@@ -58,7 +83,11 @@ const Contact = () => {
         serviceInterest: "",
         message: ""
       });
-    }, 1500);
+    } catch (error) {
+      toast.error("There was an issue sending your message. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
   
   const businessTypes = [
@@ -170,7 +199,7 @@ const Contact = () => {
                 </div>
                 
                 <div>
-                  <label htmlFor="businessType" className="block text-sm font-medium mb-2">
+                  <label htmlFor="businessType" className="block text sm font-medium mb-2">
                     Business Type
                   </label>
                   <Select 
@@ -255,7 +284,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-medium text-lg">Phone</h3>
-                    <p className="text-gray-600 dark:text-gray-300">(555) 123-4567</p>
+                    <p className="text-gray-600 dark:text-gray-300">9132059846</p>
                   </div>
                 </div>
                 
@@ -267,20 +296,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-medium text-lg">Email</h3>
-                    <p className="text-gray-600 dark:text-gray-300">info@jbrooksdigital.com</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start">
-                  <div className="bg-brand-teal/10 p-3 rounded-full mr-4">
-                    <svg className="w-6 h-6 text-brand-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="font-medium text-lg">Office</h3>
-                    <p className="text-gray-600 dark:text-gray-300">123 Tech Ave, Suite 400<br />San Francisco, CA 94107</p>
+                    <p className="text-gray-600 dark:text-gray-300">jbrooksdigital@gmail.com</p>
                   </div>
                 </div>
               </div>
@@ -298,24 +314,8 @@ const Contact = () => {
         </div>
       </section>
       
-      {/* Map Section */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-900">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12 reveal">
-            <h2 className="text-3xl font-bold mb-6">Find Us</h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Visit our office or schedule a virtual meeting. We're available to discuss your project in person or online.
-            </p>
-          </div>
-          
-          <div className="h-96 w-full rounded-xl overflow-hidden shadow-lg reveal">
-            {/* Placeholder for map - in production would use Google Maps or similar */}
-            <div className="w-full h-full bg-gray-200 dark:bg-gray-800 flex items-center justify-center">
-              <p className="text-gray-500 dark:text-gray-400 text-lg">Interactive Map Would Be Embedded Here</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Map Section hidden for now */}
+      
     </>
   );
 };

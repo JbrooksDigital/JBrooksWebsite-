@@ -73,11 +73,11 @@ const BenefitsSection = () => {
           {benefits.map((benefit, index) => (
             <div 
               key={index} 
-              className="reveal bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 transition-all transform hover:-translate-y-2 hover:shadow-xl duration-300"
+              className="reveal glass-card rounded-2xl shadow-lg p-8 transition-all transform hover:-translate-y-2 hover:shadow-xl duration-300 border border-white/20 dark:border-white/10"
               style={{ animationDelay: `${index * 0.15}s` }}
             >
-              <div className={`w-16 h-16 rounded-xl mb-6 flex items-center justify-center bg-gradient-to-br ${benefit.color} p-0.5`}>
-                <div className="bg-white dark:bg-gray-800 w-full h-full rounded-lg flex items-center justify-center">
+              <div className={`w-16 h-16 rounded-xl mb-6 flex items-center justify-center bg-gradient-to-br ${benefit.color} p-0.5 shadow-md`}>
+                <div className="bg-white dark:bg-gray-900 w-full h-full rounded-lg flex items-center justify-center">
                   {benefit.icon}
                 </div>
               </div>
@@ -94,13 +94,14 @@ const BenefitsSection = () => {
           ))}
         </div>
         
-        <div className="mt-20 p-8 bg-gradient-to-r from-brand-blue to-brand-teal/90 rounded-2xl shadow-xl reveal">
-          <div className="flex flex-col md:flex-row items-center justify-between">
+        <div className="mt-20 p-8 rounded-2xl shadow-xl reveal relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-r from-brand-blue to-brand-teal/90"></div>
+          <div className="relative z-10 flex flex-col md:flex-row items-center justify-between">
             <div className="mb-6 md:mb-0 md:mr-8">
               <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">Ready to transform your business?</h3>
               <p className="text-white/80">Get started with our AI solutions today.</p>
             </div>
-            <button className="px-8 py-4 bg-white text-brand-blue font-bold rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105">
+            <button className="px-8 py-4 bg-white text-brand-blue font-bold rounded-full shadow-lg hover:shadow-xl transition-all transform hover:scale-105">
               Schedule a Demo
             </button>
           </div>

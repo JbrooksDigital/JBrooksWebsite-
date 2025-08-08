@@ -2,7 +2,6 @@
 import HeroSection from "@/components/home/HeroSection";
 import BenefitsSection from "@/components/home/BenefitsSection";
 import ServicesSection from "@/components/home/ServicesSection";
-import TestimonialsSection from "@/components/home/TestimonialsSection";
 import CtaSection from "@/components/home/CtaSection";
 
 const Home = () => {
@@ -11,7 +10,6 @@ const Home = () => {
       <HeroSection />
       <BenefitsSection />
       <ServicesSection />
-      <TestimonialsSection />
       <CtaSection />
     </>
   );
