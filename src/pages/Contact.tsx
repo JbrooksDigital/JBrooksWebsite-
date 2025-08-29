@@ -314,8 +314,6 @@ const Contact = () => {
         </div>
       </section>
       
-      {/* Map Section hidden for now */}
-      
     </>
   );
 };

@@ -138,7 +138,7 @@ const HeroSection = () => {
             </div>
 
             {/* Right Column - Social Proof */}
-            <div className="hidden md:block bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 animate-fade-in" style={{ animationDelay: '1s' }}>
+            <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 animate-fade-in" style={{ animationDelay: '1s' }}>
               <div className="space-y-6">
                 <div className="flex items-start gap-4 p-4 bg-white/5 rounded-lg">
                   <div className="flex-shrink-0">

@@ -31,12 +31,12 @@ const CtaSection = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="relative reveal">
           {/* Decorative elements */}
-          <div className="absolute -top-12 -left-12 w-24 h-24 text-brand-teal/20 hidden md:block">
+          <div className="absolute -top-12 -left-12 w-24 h-24 text-brand-teal/20">
             <svg width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="48" cy="48" r="48" fill="currentColor"/>
             </svg>
           </div>
-          <div className="absolute -bottom-12 -right-12 w-24 h-24 text-brand-teal/20 hidden md:block">
+          <div className="absolute -bottom-12 -right-12 w-24 h-24 text-brand-teal/20">
             <svg width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect width="96" height="96" rx="12" fill="currentColor"/>
             </svg>
